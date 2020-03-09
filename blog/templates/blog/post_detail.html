@@ -1,6 +1,6 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base.html' %} <!--Extending base.html -->
 
-{% block content %}
+{% block content %}  <!--This part will be in a block, will use in base.html -->
     <div class="post">
         {% if post.published_date %}
           <div class="date">
@@ -11,8 +11,8 @@
         {% endif %}
         
         <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-        {% if user.is_authenticated %}
+        <p>{{ post.text|linebreaksbr }}</p> <!--Line break for paragraph -->
+        {% if user.is_authenticated %}      <!--If user is authenticate then delete and edit option -->
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
         {% endif %}
@@ -27,7 +27,7 @@
     <div class="comment">
         <div class="date">
             {{ comment.created_date }}
-            {% if not comment.approved_comment %}
+            {% if not comment.approved_comment %} <!--option for comment if not approved -->
                 <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                 <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
             {% endif %}
@@ -36,7 +36,7 @@
         <p>{{ comment.text|linebreaks }}</p>
     </div>
     {% endif %}
-{% empty %}
-    <p>No comments here yet :(</p>
+       {% empty %}
+            <p>No comments here yet :(</p>
 {% endfor %}
 {% endblock %}

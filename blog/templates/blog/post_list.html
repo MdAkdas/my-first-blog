@@ -1,8 +1,8 @@
-    {% extends 'blog/base.html' %}        
+    {% extends 'blog/base.html' %}       <!--Extending base.html --> 
 
         {% block content %}
 
-           {% for post in posts %}
+           {% for post in posts %}  <!--showing post list -->
                 <div class="post">
                     <div class="date">
                         <p>published: {{ post.published_date }}</p>
